@@ -7,6 +7,13 @@ function updatedUi() {
     const boardHolder = document.getElementById("board-holder");
     const gameName = document.getElementById("game-name");
 
+    for(let columnIndex=0; columnIndex <=6; columnIndex +=1){
+        const isColumnFull = game.isColumnFull(columnIndex);
+        const columnId = `column-${columnIndex}`;
+        const column = document.getElementById(columnId)
+    }
+
+
     for (let rowIndex = 0; rowIndex <= 5; rowIndex++) {
         for (let columnIndex = 0; columnIndex <= 6; columnIndex++) {
             let square = document.getElementById(`square-${[rowIndex]}-${[columnIndex]}`);
@@ -57,9 +64,9 @@ function updatedUi() {
     }
 }
 
-function isColumnFull (columnIndex) {
-    return game.columns[columnIndex].isFull();
-}
+// function isColumnFull (columnIndex) {
+//     return game.columns[columnIndex].isFull();
+// }
 
 window.addEventListener("DOMContentLoaded", () => {
     const name1 = document.getElementById("player-1-name");

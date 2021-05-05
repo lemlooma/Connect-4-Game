@@ -19,6 +19,9 @@ export class Game {
     getName() {
         return `${this.playerOneName} VS ${this.playerTwoName}`;
     }
+    isColumnFull(columnIndex) {
+        return this.columns[columnIndex].isFull();
+    }
 
     playInColumn(columnIndex) {
         this.columns[columnIndex].add(this.currentPlayer)
