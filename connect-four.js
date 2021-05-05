@@ -7,13 +7,20 @@ function updatedUi() {
     const boardHolder = document.getElementById("board-holder");
     const gameName = document.getElementById("game-name");
 
-    for(let columnIndex=0; columnIndex <=6; columnIndex +=1){
+    //*** this loop checks if the column is full */
+    for(let columnIndex = 0; columnIndex <= 6; columnIndex += 1){
         const isColumnFull = game.isColumnFull(columnIndex);
         const columnId = `column-${columnIndex}`;
         const column = document.getElementById(columnId)
+
+        if(isColumnFull) {
+            column.classList.add('full');
+        } else {
+            column.classList.remove('full');
+        };
     }
 
-
+    //*** this loop appends the token to each square depending on click */
     for (let rowIndex = 0; rowIndex <= 5; rowIndex++) {
         for (let columnIndex = 0; columnIndex <= 6; columnIndex++) {
             let square = document.getElementById(`square-${[rowIndex]}-${[columnIndex]}`);
@@ -35,17 +42,7 @@ function updatedUi() {
         }
     }
 
-    for (let columnIndex = 0; columnIndex <= 6; columnIndex++) {
-        const columnIndx = document.getElementById(`column-${[columnIndex]}`);
-
-        if (isColumnFull() === true) {
-            columnIndx.classList.add('full');
-
-        } else if (isColumnFull() === false) {
-            columnIndx.classList.remove('full');
-        }
-    }
-
+    
     if( game === undefined) {
         boardHolder.classList.add("is-invisible");
 
@@ -64,9 +61,6 @@ function updatedUi() {
     }
 }
 
-// function isColumnFull (columnIndex) {
-//     return game.columns[columnIndex].isFull();
-// }
 
 window.addEventListener("DOMContentLoaded", () => {
     const name1 = document.getElementById("player-1-name");
