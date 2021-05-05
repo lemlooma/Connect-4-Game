@@ -42,12 +42,12 @@ function updatedUi() {
         }
     }
 
-    
+
     if( game === undefined) {
         boardHolder.classList.add("is-invisible");
 
     }else {
-        boardHolder.classList.remove("is-invisble");
+        boardHolder.classList.remove("is-invisible");
         gameName.innerHTML = game.getName()
         const currentPlayer = game.currentPlayer;
 
