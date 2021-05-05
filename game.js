@@ -15,16 +15,21 @@ export class Game {
             new Column(),
         ];
     }
+
     getName() {
         return `${this.playerOneName} VS ${this.playerTwoName}`;
     }
+
     playInColumn(columnIndex) {
-        this.colums[columnIndex].add(this.currentPlayer)
+        this.columns[columnIndex].add(this.currentPlayer)
         if (this.currentPlayer === 1) {
             this.currentPlayer = 2;
         } else {
             this.currentPlayer = 1;
-            this.colums[columnIndex]
+            this.columns[columnIndex];
         }
+    }
+    getTokenAt(rowIndex, columnIndex) {
+        return this.columns[columnIndex].getTokenAt([rowIndex]);
     }
 }

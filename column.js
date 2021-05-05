@@ -7,6 +7,7 @@ add(playerNum) {
     for(let i = 5; i >= 0; i-=1) {
         if(this.tokens[i]=== null) {
            this.tokens[i] = playerNum
+           break;
         }
     }
 }

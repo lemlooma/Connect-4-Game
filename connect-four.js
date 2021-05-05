@@ -7,6 +7,27 @@ function updatedUi() {
     const boardHolder = document.getElementById("board-holder");
     const gameName = document.getElementById("game-name");
 
+    for (let rowIndex = 0; rowIndex <= 5; rowIndex++) {
+        for (let columnIndex = 0; columnIndex <= 6; columnIndex++) {
+            let square = document.getElementById(`square-${[rowIndex]}-${[columnIndex]}`);
+            square.innerHTML = '';
+
+            const playerNumber = game.getTokenAt(rowIndex, columnIndex)
+
+            if (playerNumber === 1) {
+                const token = document.createElement('div')
+                token.classList.add('black')
+                token.classList.add('token')
+                square.appendChild(token);
+            } else if (playerNumber === 2) {
+                const token = document.createElement('div')
+                token.classList.add('red')
+                token.classList.add('token')
+                square.appendChild(token);
+            }
+        }
+    }
+
     if( game === undefined) {
         boardHolder.classList.add("is-invisible");
 
@@ -22,7 +43,6 @@ function updatedUi() {
             clickTarget.classList.add('red');
             clickTarget.classList.remove('black');
         }
-
     }
 }
 
@@ -56,7 +76,11 @@ window.addEventListener("DOMContentLoaded", () => {
     })
 
     clickTarget.addEventListener("click", event => {
-        game.playInColumn();
+        const target = event.target.id;
+        if (!target.startsWith('column-')) return;
+        const columnIndex = Number.parseInt(target[target.length - 1]);
+
+        game.playInColumn(columnIndex);
         updatedUi();
     })
 
