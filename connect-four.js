@@ -11,7 +11,7 @@ function updatedUi() {
 
     }else {
         boardHolder.classList.remove("is-invisble");
-        gameName.innerHTML = game.gameName()
+        gameName.innerHTML = game.getName()
     }
 }
 
@@ -41,5 +41,5 @@ function enabledButt () {
         enabledButt()
         updatedUi()
     })
-    
+
 })
