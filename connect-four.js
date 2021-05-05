@@ -28,6 +28,17 @@ function updatedUi() {
         }
     }
 
+    for (let columnIndex = 0; columnIndex <= 6; columnIndex++) {
+        const columnIndx = document.getElementById(`column-${[columnIndex]}`);
+
+        if (isColumnFull() === true) {
+            columnIndx.classList.add('full');
+
+        } else if (isColumnFull() === false) {
+            columnIndx.classList.remove('full');
+        }
+    }
+
     if( game === undefined) {
         boardHolder.classList.add("is-invisible");
 
@@ -44,6 +55,10 @@ function updatedUi() {
             clickTarget.classList.remove('black');
         }
     }
+}
+
+function isColumnFull (columnIndex) {
+    return game.columns[columnIndex].isFull();
 }
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -72,7 +87,7 @@ window.addEventListener("DOMContentLoaded", () => {
         name1.value = "";
         name2.value = "";
         enabledButt()
-        updatedUi()
+        updatedUi();
     })
 
     clickTarget.addEventListener("click", event => {
