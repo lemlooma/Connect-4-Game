@@ -9,16 +9,10 @@ export class ColumnWinInspector {
             const thirdToken = this.column.getTokenAt(i + 2);
             const fourthToken = this.column.getTokenAt(i + 3);
 
-            if (
-                firstToken !== null &&
-                firstToken === secondToken &&
-                secondToken === thirdToken &&
-                thirdToken === fourthToken
-            ) {
+            if ( firstToken === secondToken && secondToken === thirdToken && thirdToken === fourthToken && firstToken !== null ) {
                 return firstToken;
-            } else {
+            }
                 return 0;
             }
         }
     }
-}

@@ -19,12 +19,13 @@ export class Game {
     }
 
     checkForColumnWin() {
+        if(this.winnerNumber === 0) return;
         for (let columnIndex = 0; columnIndex <= 6; columnIndex++) {
             const column = this.columns[columnIndex];
             const columnInspect = new ColumnWinInspector(column);
             columnInspect.inspect();
-            if (this.winnerNumber === 1 || this.winnerNumber === 2) {
-                this.winnerNumber = winnerNumber
+            if (columnInspect.inspect === 1 || columnInspect.inspect === 2) {
+                this.winnerNumber = columnInspect.inspect
             }
             break;
         }
