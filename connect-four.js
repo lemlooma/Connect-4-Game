@@ -1,7 +1,16 @@
 import { Game } from './game.js';
-
+import { GameJsonDeserializer } from './game-json-deserializer.js'
+import { GameJsonSerializer } from './game-json-serializer.js'
 let game = undefined;
 let clickTarget = document.getElementById("click-targets");
+const json = window.localStorage.getItem('connect-four')
+
+if (json) {
+    const deserializer = new GameJsonDeserializer(json);
+    game = deserializer.deserialize();
+    updatedUi()
+}
+
 
 function updatedUi() {
     const boardHolder = document.getElementById("board-holder");
@@ -95,9 +104,14 @@ window.addEventListener("DOMContentLoaded", () => {
     clickTarget.addEventListener("click", event => {
         const target = event.target.id;
         if (!target.startsWith('column-')) return;
-        const columnIndex = Number.parseInt(target[target.length - 1]);
 
+        const columnIndex = Number.parseInt(target[target.length - 1]);
         game.playInColumn(columnIndex);
+
+        const serializer = new GameJsonSerializer(game)
+        const json = serializer.serialize();
+        window.localStorage.setItem('connect-four', json)
+
         updatedUi();
     })
 
