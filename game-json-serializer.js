@@ -16,7 +16,7 @@ export class GameJsonSerializer {
                 data.tokens[rowIndx][columnIndx] = tokenValue;
             }
         }
-        
+
         return JSON.stringify(data);
     };
 

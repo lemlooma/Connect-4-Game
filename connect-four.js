@@ -107,6 +107,7 @@ window.addEventListener("DOMContentLoaded", () => {
         const columnIndex = Number.parseInt(target[target.length - 1]);
         game.playInColumn(columnIndex);
 
+        const serializer = new GameJsonSerializer(game)
         const json = serializer.serialize();
         window.localStorage.setItem('connect-four', json)
 
