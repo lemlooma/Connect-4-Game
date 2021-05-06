@@ -19,6 +19,7 @@ function updatedUi() {
             column.classList.remove('full');
         };
     }
+    
 
     //*** this loop appends the token to each square depending on click */
     for (let rowIndex = 0; rowIndex <= 5; rowIndex++) {

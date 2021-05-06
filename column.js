@@ -11,6 +11,7 @@ export class Column {
             }
         }
     }
+    
     getTokenAt(rowIndex) {
         return this.tokens[rowIndex]
 
